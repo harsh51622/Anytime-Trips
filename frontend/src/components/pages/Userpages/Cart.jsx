@@ -77,7 +77,7 @@ export default function Cart() {
 
                     {item.image ? (
                       <img
-                        src={item.image}
+                       src={`https://anytime-trips.onrender.com${item.image}`}
                         alt={item.name || "trip"}
                         className="w-full h-full object-cover"
                       />
