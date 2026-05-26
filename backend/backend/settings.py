@@ -63,16 +63,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # DATABASE
+import os
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'anytime',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    'default': dj_database_url.parse(
+        os.environ.get("DATABASE_URL")
+    )
 }
+
 
 
 # PASSWORD VALIDATION
