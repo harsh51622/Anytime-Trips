@@ -1,0 +1,7 @@
+Django
+djangorestframework
+gunicorn
+django-cors-headers
+whitenoise
+djangorestframework-simplejwt
+razorpay
