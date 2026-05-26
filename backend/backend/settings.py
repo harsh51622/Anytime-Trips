@@ -63,12 +63,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # DATABASE
-import os
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get("DATABASE_URL")
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600
     )
 }
 
@@ -102,7 +102,7 @@ USE_TZ = True
 
 
 # STATIC FILES
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -141,4 +141,3 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'harshit952851@gmail.com'
 EMAIL_HOST_PASSWORD = 'iljtwuohwgrpdokz'
-
