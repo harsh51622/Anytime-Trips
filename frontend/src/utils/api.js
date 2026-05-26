@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/",
+  baseURL: "https://anytime-trips.onrender.com/api/",
 });
 
 // auto attach token
@@ -17,4 +17,3 @@ api.interceptors.request.use((config) => {
 });
 
 export default api;
-
