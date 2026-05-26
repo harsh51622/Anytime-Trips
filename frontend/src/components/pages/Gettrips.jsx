@@ -99,11 +99,11 @@ export default function Gettrips({ home = false }) {
 
                                 <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:scale-105 transition duration-300">
 
-    <img
-  src={getImageUrl(item.image)}
-  alt=""
-  className="w-full h-52 object-cover"
-/>
+                                    <img
+                                        src={`http://127.0.0.1:8000${item.image}`}
+                                        alt=""
+                                        className="w-full h-52 object-cover"
+                                    />
 
                                     <div className="p-5">
 
