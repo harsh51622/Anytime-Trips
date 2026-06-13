@@ -6,20 +6,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import *
 from django.core.mail import send_mail
 from django.conf import settings
-from django.contrib.auth import get_user_model
-from django.http import HttpResponse, JsonResponse
 
-def reset_admin(request):
-    User = get_user_model()
-    return JsonResponse(
-        list(User.objects.values(
-            "id",
-            "username",
-            "email",
-            "is_superuser"
-        )),
-        safe=False
-    )
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
