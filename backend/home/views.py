@@ -10,8 +10,7 @@ from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 
 def reset_admin(request):
- User = get_user_model()
-
+    User = get_user_model()
     return JsonResponse(
         list(User.objects.values(
             "id",
