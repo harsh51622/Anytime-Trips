@@ -117,7 +117,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
-    "https://anytime-trips.onrender.com",
+    "https://anytime-trips-wefe.vercel.app",
+    "http://127.0.0.1:5173",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
