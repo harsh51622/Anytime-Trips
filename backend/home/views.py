@@ -7,7 +7,6 @@ from .models import *
 from django.core.mail import send_mail
 from django.conf import settings
 
-
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register(request):
