@@ -7,7 +7,7 @@ from .models import *
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 def reset_admin(request):
     User = get_user_model()
