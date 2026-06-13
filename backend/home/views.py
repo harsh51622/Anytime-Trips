@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .serializer import *
+from .serializers import *
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
-
+from .models import *
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -28,12 +28,7 @@ def user_Profile(request):
         'role': user.role
     })
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def getCategory(request):
-    category = Category.objects.all()
-    serializer = CategorySerializer(category, many=True) 
-    return Response(serializer.data)  
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -177,15 +172,12 @@ def deleteCart(request, id):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def checkout(request):
-
     user = request.user
-
     number = request.data.get("number")
     address = request.data.get("address")
     email = request.data.get("email")
     payment_method = request.data.get("payment_method")
     cart = request.data.get("cart")
-
     total = 0
     trip_details = ""
 
@@ -201,23 +193,14 @@ def checkout(request):
 
     # SAVE ORDER ITEMS
     for item in cart:
-
         print(item)
-
-        # GET TRIP ID
         trip_id = item.get("id") or item.get("trips")
-
-        # FIND TRIP
-        trip = Trips.objects.filter(
-            id=trip_id
-        ).first()
-
+        trip = Trips.objects.filter(id=trip_id).first()
         # IF TRIP NOT FOUND
         if not trip:
             continue
 
         quantity = item.get("quantity", 1)
-
         total += trip.amount * quantity
 
         # EMAIL DETAILS
@@ -272,13 +255,16 @@ Anytime Trips
 """
 
     # SEND EMAIL
-    send_mail(
-        subject,
-        message,
-        settings.EMAIL_HOST_USER,
-        [email],
-        fail_silently=False,
-    )
+    try:
+        send_mail(
+            subject,
+            message,
+            settings.EMAIL_HOST_USER,
+            [email],
+            fail_silently=False,
+        )
+    except Exception as e:
+        print(f"Error sending email: {e}")
 
     return Response({
         "message": "Order Placed Successfully & Email Sent"
@@ -287,20 +273,8 @@ Anytime Trips
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def order_history(request):
-
-    orders = Order.objects.filter(
-
-        user=request.user
-
-    ).order_by('-created_at')
-
-    serializer = OrderSerializer(
-
-        orders,
-
-        many=True
-    )
-
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    serializer = OrderSerializer(orders,many=True)
     return Response(serializer.data)
 
 

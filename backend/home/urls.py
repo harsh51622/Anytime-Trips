@@ -10,15 +10,12 @@ urlpatterns=[
     path('trip/<int:id>/', gettripid),
     path('create-trip/', create_trip),
     path('get_trips/', get_trips),
-    path('getCategory/', getCategory),
+
     path('getCart/', getCart),
     path('addCart/', addCart),
     path('deleteCart/<int:id>/',deleteCart),
     path('checkout/', checkout),
-    path(
-        'order-history/',
-        order_history
-    ),
+    path('order-history/',order_history),
     path('update-trip/<int:id>/', update_trip),
     path('gettripid/<int:id>/', gettripid),
     path('delete-trip/<int:id>/', delete_trip),

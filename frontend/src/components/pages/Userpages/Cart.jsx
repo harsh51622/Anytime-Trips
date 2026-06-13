@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom"
 import  Navbar from "../Navbar";
+import { getImageUrl } from "../../../utils/api";
 
 
 
@@ -77,7 +78,7 @@ export default function Cart() {
 
                     {item.image ? (
                       <img
-                       src={`https://anytime-trips.onrender.com${item.image}`}
+                        src={getImageUrl(item.image)}
                         alt={item.name || "trip"}
                         className="w-full h-full object-cover"
                       />

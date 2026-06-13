@@ -10,6 +10,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "anytime-trips.onrender.com",
+    ".onrender.com",
 ]
 
 INSTALLED_APPS = [
@@ -61,8 +62,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
-# DATABASE
+import os
 import dj_database_url
 
 DATABASES = {
@@ -102,7 +102,7 @@ USE_TZ = True
 
 
 # STATIC FILES
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -115,14 +115,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-# CORS
-CORS_ALLOWED_ORIGINS = [
+CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
-    "http://127.0.0.1:5173",
-
-    "https://anytime-trips-wefe.vercel.app",
+    "https://anytime-trips.onrender.com",
 ]
+CORS_ALLOW_CREDENTIALS = True
 
 
 # REST FRAMEWORK
@@ -132,12 +129,19 @@ REST_FRAMEWORK = {
     )
 }
 
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
+}
+
 
 # EMAIL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
 EMAIL_HOST_USER = 'harshit952851@gmail.com'
 EMAIL_HOST_PASSWORD = 'iljtwuohwgrpdokz'

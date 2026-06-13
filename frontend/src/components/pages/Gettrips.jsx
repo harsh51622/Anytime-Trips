@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../utils/api";
+import api, { getImageUrl } from "../../utils/api";
 import { Link } from "react-router-dom";
 
 export default function Gettrips({ home = false }) {
@@ -99,11 +99,11 @@ export default function Gettrips({ home = false }) {
 
                                 <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:scale-105 transition duration-300">
 
-                                    <img
-                                        src={`https://anytime-trips.onrender.com${item.image}`}
-                                        alt=""
-                                        className="w-full h-52 object-cover"
-                                    />
+    <img
+  src={getImageUrl(item.image)}
+  alt=""
+  className="w-full h-52 object-cover"
+/>
 
                                     <div className="p-5">
 

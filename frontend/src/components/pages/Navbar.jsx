@@ -11,11 +11,16 @@ import {
   useNavigate
 } from "react-router-dom";
 
+import { useCart } from "../context/UserContext";
+
 export default function Navbar() {
 
   const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
+
+  const { cartItems } = useCart();
+  const cartCount = cartItems.reduce((acc, item) => acc + (Number(item.quantity) || 0), 0);
 
 
   // LOGOUT
@@ -102,7 +107,7 @@ export default function Navbar() {
             to="/cart"
             className="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow-md transition"
           >
-            Cart
+            Cart {cartCount > 0 && `(${cartCount})`}
           </Link>
 
 
@@ -207,7 +212,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               to="/cart"
             >
-              Cart
+              Cart {cartCount > 0 && `(${cartCount})`}
             </Link>
 
 

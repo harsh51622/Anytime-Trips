@@ -38,29 +38,13 @@ class Order(models.Model):
         ('NETBANKING', 'Net Banking'),
     )
 
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
-    )
-
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     number = models.CharField(max_length=15)
     address = models.TextField()
     email = models.EmailField()
-
-    payment_method = models.CharField(
-        max_length=20,
-        choices=PAYMENT_CHOICES
-    )
-
-    total_price = models.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        default=0.00
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True
-    )
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_CHOICES)
+    total_price = models.DecimalField( max_digits=10, decimal_places=2, default=0.00)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.user.username} - {self.payment_method}"

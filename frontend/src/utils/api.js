@@ -16,5 +16,15 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-export default api;
+export const getImageUrl = (imagePath) => {
+  if (!imagePath) return "";
+  if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+    return imagePath;
+  }
+  // Remove trailing slash and '/api' or '/api/' from baseURL to get the root host URL
+  const base = api.defaults.baseURL.replace(/\/api\/?$/, "");
+  const normalizedPath = imagePath.startsWith("/") ? imagePath : `/${imagePath}`;
+  return `${base}${normalizedPath}`;
+};
 
+export default api;

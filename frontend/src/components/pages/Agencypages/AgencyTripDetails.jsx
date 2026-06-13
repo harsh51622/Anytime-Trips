@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import api from "../../../utils/api"
+import api, { getImageUrl } from "../../../utils/api"
 import Navbar from "../Agencypages/Navbar"
 
 export default function AgencyTripDetails() {
@@ -211,7 +211,7 @@ export default function AgencyTripDetails() {
                             typeof trip.image === "string" && (
 
                                 <img
-                                    src={`http://127.0.0.1:8000${trip.image}`}
+                                    src={getImageUrl(trip.image)}
                                     alt="trip"
                                     className="w-full h-72 object-cover rounded-2xl"
                                 />

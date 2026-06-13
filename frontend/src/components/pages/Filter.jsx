@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../utils/api";
+import api, { getImageUrl } from "../../utils/api";
 import { Link } from "react-router-dom";
 
 export default function TripsFilterPage() {
@@ -124,7 +124,7 @@ export default function TripsFilterPage() {
 
               {/* Image */}
               <img
-                src={`http://127.0.0.1:8000${item.image}`}
+                src={getImageUrl(item.image)}
                 alt={item.name}
                 className="w-full h-60 object-cover"
               />
