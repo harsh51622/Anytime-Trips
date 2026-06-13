@@ -47,7 +47,7 @@ export default function BookingPage() {
             </p>
 
             <h1 className="text-5xl md:text-7xl font-bold">
-              Book Your Journey
+              Book of Your Journey
             </h1>
 
             <p className="mt-5 text-lg text-gray-200">
