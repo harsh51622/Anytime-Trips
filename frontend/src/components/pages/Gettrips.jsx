@@ -100,7 +100,7 @@ export default function Gettrips({ home = false }) {
                                 <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:scale-105 transition duration-300">
 
                                     <img
-                                        src={`http://127.0.0.1:8000${item.image}`}
+                                        src={`https://anytime-trips.onrender.com${item.image}`}
                                         alt=""
                                         className="w-full h-52 object-cover"
                                     />
