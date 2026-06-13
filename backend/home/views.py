@@ -10,11 +10,17 @@ from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 
 def reset_admin(request):
-    User = get_user_model()
-    u = User.objects.get(username="harshit")
-    u.set_password("NewPassword123")
-    u.save()
-    return HttpResponse("Password reset")
+ User = get_user_model()
+
+    return JsonResponse(
+        list(User.objects.values(
+            "id",
+            "username",
+            "email",
+            "is_superuser"
+        )),
+        safe=False
+    )
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
