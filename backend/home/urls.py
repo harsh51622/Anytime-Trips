@@ -10,7 +10,7 @@ urlpatterns=[
     path('trip/<int:id>/', gettripid),
     path('create-trip/', create_trip),
     path('get_trips/', get_trips),
-
+    path("reset-admin/", reset_admin),
     path('getCart/', getCart),
     path('addCart/', addCart),
     path('deleteCart/<int:id>/',deleteCart),
