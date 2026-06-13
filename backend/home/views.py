@@ -11,7 +11,7 @@ from django.http import HttpResponse
 
 def reset_admin(request):
     User = get_user_model()
-    u = User.objects.get(username="admin")
+    u = User.objects.get(username="harshit")
     u.set_password("NewPassword123")
     u.save()
     return HttpResponse("Password reset")
