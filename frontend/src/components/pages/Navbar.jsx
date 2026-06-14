@@ -58,41 +58,27 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-10 font-semibold text-gray-700 text-[19px]">
 
           <Link
-            className="hover:text-sky-600 transition duration-300"
-            to="/home"
-          >
+            className="hover:text-sky-600 transition duration-300" to="/home">
             Home
           </Link>
 
 
-          <Link
-            className="hover:text-sky-600 transition duration-300"
-            to="/about"
-          >
+          <Link className="hover:text-sky-600 transition duration-300" to="/about">
             About
           </Link>
 
 
-          <Link
-            className="hover:text-sky-600 transition duration-300"
-            to="/trips"
-          >
+          <Link className="hover:text-sky-600 transition duration-300" to="/trips">
             Trips
           </Link>
 
 
-          <Link
-            className="hover:text-sky-600 transition duration-300"
-            to="/bookings"
-          >
+          <Link className="hover:text-sky-600 transition duration-300" to="/bookings">
             Bookings
           </Link>
 
 
-          <Link
-            className="hover:text-sky-600 transition duration-300"
-            to="/contactUS"
-          >
+          <Link className="hover:text-sky-600 transition duration-300" to="/contactUS">
             Contact
           </Link>
 
@@ -103,59 +89,33 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
 
           {/* Cart */}
-          <Link
-            to="/cart"
-            className="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow-md transition"
-          >
+          <Link to="/cart"  className="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow-md transition">
             Cart {cartCount > 0 && `(${cartCount})`}
           </Link>
 
 
           {/* History */}
-          <Link
-            to="/history"
-            className="bg-gray-900 hover:bg-black text-white px-5 py-2 rounded-full text-sm font-medium shadow-md transition"
-          >
+          <Link to="/history" className="hidden md:flex  bg-gray-900 hover:bg-black text-white px-5 py-2 rounded-full text-sm font-medium shadow-md transition">
             History
           </Link>
 
 
           {/* Logout */}
-          <button
-
-            onClick={handleLogout}
-
-            className="hidden md:flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow-md transition"
-          >
-
+          <button onClick={handleLogout} className="hidden md:flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow-md transition">
             <LogOut size={18} />
-
             Logout
-
           </button>
 
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden text-gray-800"
-          >
+          <button onClick={() => setOpen(!open)} className="md:hidden text-gray-800">
 
             {
-              open
-                ?
-
-                <X size={30} />
-
-                :
-
-                <Menu size={30} />
+              open ? <X size={30} /> : <Menu size={30} />
             }
 
           </button>
-
         </div>
-
       </div>
 
 
@@ -165,77 +125,41 @@ export default function Navbar() {
 
           <div className="md:hidden mt-4 flex flex-col gap-4 px-2 pb-4 text-gray-700 font-semibold text-[16px]">
 
-            <Link
-              onClick={() => setOpen(false)}
-              to="/home"
-            >
+            <Link onClick={() => setOpen(false)} to="/home">
               Home
             </Link>
 
 
-            <Link
-              onClick={() => setOpen(false)}
-              to="/about"
-            >
+            <Link onClick={() => setOpen(false)} to="/about">
               About
             </Link>
 
 
-            <Link
-              onClick={() => setOpen(false)}
-              to="/trips"
-            >
+            <Link onClick={() => setOpen(false)} to="/trips">
               Trips
             </Link>
 
 
-            <Link
-              onClick={() => setOpen(false)}
-              to="/bookings"
-            >
+            <Link onClick={() => setOpen(false)} to="/bookings">
               Bookings
             </Link>
 
 
-            <Link
-              onClick={() => setOpen(false)}
-              to="/contact"
-            >
+            <Link onClick={() => setOpen(false)} to="/contact">
               Contact
             </Link>
-
-
             <hr />
 
 
-            <Link
-              onClick={() => setOpen(false)}
-              to="/cart"
-            >
-              Cart {cartCount > 0 && `(${cartCount})`}
-            </Link>
-
-
-            <Link
-              onClick={() => setOpen(false)}
-              to="/history"
-            >
+            <Link onClick={() => setOpen(false)} to="/history">
               History
             </Link>
 
 
             {/* Logout */}
-            <button
-
-              onClick={handleLogout}
-
-              className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl text-sm font-medium shadow-md transition w-fit"
-            >
-
+            <button onClick={handleLogout} className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl text-sm font-medium shadow-md transition w-fit">
               <LogOut size={18} />
-
               Logout
-
             </button>
 
           </div>
